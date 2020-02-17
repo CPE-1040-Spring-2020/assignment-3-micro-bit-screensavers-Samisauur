@@ -1,12 +1,7 @@
-//Outline for screensavers assignment
-
 let awake: boolean = true
 let gest: Gesture = Gesture.Shake
 let gestures = [Gesture.Shake, Gesture.LogoDown, Gesture.TiltLeft, Gesture.TiltRight, Gesture.ThreeG]
 let foos = [ss1, ss2, ss3, ss4, ss5]
-
-
-
 input.onButtonPressed(Button.A, function () {
     awake = true
 })
@@ -32,8 +27,6 @@ input.onGesture(Gesture.TiltRight, function () {
 input.onGesture(Gesture.ThreeG, function () {
     gest = Gesture.ThreeG
 })
-
-
 function ss1() {
     for (let i = 0; i < 1; i++) {
         led.plot(2, 2)
@@ -78,156 +71,120 @@ function ss1() {
         basic.pause(80)
         basic.clearScreen()
         led.plot(2, 2)
-    
     }
-
 }
-
 function ss2() {
-    let bar1 = game.createSprite(0, 0)
-    let bar2 = game.createSprite(0, 1)
-    let bar3 = game.createSprite(0, 2)
-    let bar4 = game.createSprite(0, 3)
-    let bar5 = game.createSprite(0, 4)
-
-    let timing: number[] = [50, 55, 60, 65]
-
-
-    for (let i = 0; (i) < 2; i++) {
-        for (let j = 0; j < 2; j++) {
-            bar1.move(1)
-            bar1.ifOnEdgeBounce()
-            basic.pause(timing[j])
-
+    let ups: number[] = [
+        Math.randomRange(0, 4),
+        Math.randomRange(0, 4),
+        Math.randomRange(0, 4),
+        Math.randomRange(0, 4),
+        Math.randomRange(0, 4)
+    ]
+    for (let y = 4; y >= 0; y--) {
+        for (let x = 0; x <= 4; x++) {
+            if (ups[x] <= y)
+                led.plot(x, y)
         }
+        basic.pause(35)
     }
-    for (let i = 0; (i) < 2; i++) {
-        for (let j = 0; j < 2; j++) {
-            bar2.move(1)
-            bar2.ifOnEdgeBounce()
-            basic.pause(timing[j])
+    for (let y = 0; y <= 4; y++) {
+        for (let x = 0; x <= 4; x++) {
 
+            if (ups[x] <= y)
+                led.unplot(x, y)
         }
+        basic.pause(55)
     }
-    for (let i = 0; (i) < 2; i++) {
-        for (let j = 0; j < 2; j++) {
-            bar3.move(1)
-            bar3.ifOnEdgeBounce()
-            basic.pause(timing[j])
-
-        }
-    }
-    for (let i = 0; (i) < 2; i++) {
-        for (let j = 0; j < 2; j++) {
-            bar4.move(1)
-            bar4.ifOnEdgeBounce()
-            basic.pause(timing[j])
-
-        }
-    }
-    for (let i = 0; (i) < 1; i++) {
-        for (let j = 0; j < 4; j++) {
-            bar5.move(1)
-            bar5.ifOnEdgeBounce()
-            basic.pause(timing[j])
-
-        }
-        basic.pause(100)
-
-
-
-    }
-    bar1.delete()
-    bar2.delete()
-    bar3.delete()
-    bar4.delete()
-    bar5.delete()
+    for (let x = 0; x <= 4; x++)
+        led.unplot(x, ups[x])
 }
-
 function ss3() {
     basic.plotLeds(`
-    . . . . .
     # # . . .
+    . # . . .
     # # . . .
     # . . . .
     # . . . .
     `)
-    basic.pause(100)
+    basic.pause(250)
     basic.plotLeds(`
-    . . . . .
+    # # . . .
+    . # . . .
+    # # . . .
+    # . . . .
+    # . . . .
+    `)
+    basic.pause(250)
+    basic.plotLeds(`
+    # # . . .
+    . # # . .
+    # # . . .
+    # . . . .
+    # . . . .
+    `)
+    basic.pause(250)
+    basic.plotLeds(`
     # # # . .
-    # # . . .
+    . # . # .
+    # # # . .
     # . . . .
     # . . . .
     `)
-    basic.pause(100)
+    basic.pause(300)
     basic.plotLeds(`
-    . . . . .
     # # . # .
-    # # . . .
-    # . . . .
-    # . . . .
-    `)
-    basic.pause(100)
-    basic.plotLeds(`
-    . . . . #
-    # # . . .
+    . # # . #
     # # . # .
     # . . . .
     # . . . .
     `)
-    basic.pause(100)
+    basic.pause(300)
     basic.plotLeds(`
-    . . . . .
-    # # . . .
     # # . . #
-    # . # . .
+    . # . # .
+    # # . . #
+    # . . . .
     # . . . .
     `)
-    basic.pause(100)
+    basic.pause(300)
     basic.plotLeds(`
-    . . . . .
-    # # # . .
     # # . . .
-    # . . # .
-    # . . . .
-    `)
-    basic.pause(100)
-    basic.plotLeds(`
-    . . . . .
-    # # . # .
-    # # . . .
-    # . . . #
-    # . . . .
-    `)
-    basic.pause(100)
-    basic.plotLeds(`
-    . . . . #
-    # # . . .
-    # # # . .
-    # . . . .
-    # . . . .
-    `)
-    basic.plotLeds(`
-    . . . . .
-    # # . # .
+    . # . . #
     # # . . .
     # . . . .
     # . . . .
     `)
-    basic.pause(100)
-    basic.plotLeds(`
-    . . . . #
-    # # . . .
-    # # . . .
-    # . . . .
-    # . . . .
-    `)
-    basic.pause(100)
-
+    basic.pause(250)
+    basic.clearScreen()
 }
-
 function ss4() {
+    let three = [
+        [0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [2, 0], [2, 1], [2, 2], [2, 3],
+        [2, 4], [4, 0], [4, 1], [4, 2], [4, 3], [4, 4]
+    ]
+    let two = [
+        [3, 4], [3, 3], [3, 2], [3, 1], [3, 0],
+        [1, 4], [1, 3], [1, 2], [1, 1], [1, 0]
+    ]
+    for (let n = 0; n < 15; n++) {
+        led.plot(three[n][0], three[n][1])
+        basic.pause(30)
+    }
+    for (let n = 0; n < 15; n++) {
+        led.unplot(three[n][0], three[n][1])
+        basic.pause(60)
+    }
+    for (let m = 0; m < 10; m++) {
+        led.plot(two[m][0], two[m][1])
+        basic.pause(30)
+    }
+    for (let m = 0; m < 10; m++) {
+        led.unplot(two[m][0], two[m][1])
+        basic.pause(60)
+    }
+}
+function ss5() {
     for (let i = 0; i < 5; i++) {
         led.plotBrightness(i, i, 100)
         led.plot(0, i)
@@ -238,14 +195,8 @@ function ss4() {
         led.plot(i, 4)
         basic.pause(400)
         basic.clearScreen()
-
     }
 }
-function ss5() {
-
-}
-
-
 basic.forever(function () {
     if (awake) {
         basic.showString("Hallo")
