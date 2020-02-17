@@ -1,13 +1,21 @@
 let awake: boolean = true
+let Bruce: boolean = false
 let gest: Gesture = Gesture.Shake
 let gestures = [Gesture.Shake, Gesture.LogoDown, Gesture.TiltLeft, Gesture.TiltRight, Gesture.ThreeG]
 let foos = [ss1, ss2, ss3, ss4, ss5]
+let nTime: number = 45
+let now: number = 0
 input.onButtonPressed(Button.A, function () {
-    awake = true
+    awake = false
+    Bruce = false
 })
 
 input.onButtonPressed(Button.B, function () {
-    awake = false
+    awake = true
+    Bruce = false
+})
+input.onButtonPressed(Button.AB, function () {
+    Bruce = !Bruce
 })
 input.onGesture(Gesture.Shake, function () {
     gest = Gesture.Shake
@@ -197,11 +205,26 @@ function ss5() {
         basic.clearScreen()
     }
 }
+function ticker(nTime: number, now: number) {
+    if (nTime == now) {
+        Bruce = true
+        while (Bruce) {
+            
+        }
+    }
+}
 basic.forever(function () {
+
     if (awake) {
         basic.showString("Hallo")
-    } else {  // screensavers
+    }
+    else {
+        ticker(nTime, now)
+        now++
         foos[gestures.indexOf(gest)]()
+
     }
 
+
 })
+
