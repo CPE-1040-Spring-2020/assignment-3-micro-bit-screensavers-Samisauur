@@ -124,8 +124,8 @@ This assignnment is more involved than the first two, but uses the same basic mi
 
 ## Screensavers
 
-_TODO: Add your screensaver descriptions!!!_
+_Gesture Shake creates a turbine, getsure logodown creates waves, gesture tilt left creates a bubble blower, gesture tilt right causes racing stripes, gesture 3g makes a sparkle falling downward!_
 
 ## Demo video
 
-_TODO: Add your video URL here!!!_
+_Link to demo video can be found [here](https://imgur.com/gallery/5WJzNPr)_
